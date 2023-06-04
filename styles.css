@@ -1,13 +1,14 @@
 div {
-    border: 2px solid black;
-    margin: 5px;
+    border: 1px solid black;
 }
 
 
 .main-container {
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 450px 1fr;
     min-height: 100dvb;
+    margin: 10px;
+    gap: 25px;
 }
 
 .options-container {
@@ -17,10 +18,27 @@ div {
 
 .display-container {
     min-height: 100dvb;
+    padding: 25px;
+}
+
+.fieldset {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-container {
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+}
+
+.input-container input {
+    outline: black;
 }
 
 .card-container {
     min-height: 100dvb;
+    justify-content: center;
     display: grid;
     gap: 15px;
     grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
@@ -49,4 +67,8 @@ div {
 .character-stats ul {
     padding: 0;
     margin: 0;
+}
+
+.stat-button {
+    padding: 8px 15px 8px 15px;
 }

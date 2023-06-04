@@ -1,6 +1,7 @@
 const characterCards = document.querySelectorAll(".character-card");
 const cardContainer = document.querySelector(".card-container");
 
+let StatBtn = "";
 let library = []
 class char {
     constructor(name, race, role, status) {
@@ -21,11 +22,11 @@ function addCharToSelection(character) {
 
 function iterateThrough(array) {
     for (let i = 0; i < array.length; i++) {
-        createCard(array[i].name, array[i].race, array[i].role);
+        createCard(array[i].name, array[i].race, array[i].role, array[i].status);
     }
 }
 
-function createCard(name, race, role) {
+function createCard(name, race, role, status) {
 
     // CARD BODY
 
@@ -82,6 +83,25 @@ function createCard(name, race, role) {
     newRole.textContent = role;
     newUL.append(newRole);
 
+    // STATUS
+
+    const newStatBtn = document.createElement('button');
+    newStatBtn.textContent = status;
+    newStatBtn.className = 'stat-button';
+    newStat.append(newStatBtn);
+
+    StatBtn = document.querySelectorAll('.stat-button')
+    activeButton();
+}
+
+// FIX BUTTON ACTIVE/INACTIVE STATE
+
+function activeButton() {
+    StatBtn.forEach((btn => {
+        btn.addEventListener('click', () => {
+            console.log(btn);
+        });
+    }));
 }
 
 // active character
@@ -94,8 +114,12 @@ ex.active();
 let ze = new char("ZzXt", "Human", "Archer", false)
 ze.active();
 
+let de = new char("Exp", "Elf", "Mage", true)
+de.active();
 
 addCharToSelection(ex);
 addCharToSelection(ze);
+addCharToSelection(de);
+
 
 iterateThrough(library);

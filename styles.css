@@ -1,0 +1,52 @@
+div {
+    border: 2px solid black;
+    margin: 5px;
+}
+
+
+.main-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    min-height: 100dvb;
+}
+
+.options-container {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+.display-container {
+    min-height: 100dvb;
+}
+
+.card-container {
+    min-height: 100dvb;
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(500px, 500px));
+}
+
+.character-card {
+    display: grid;;
+    grid-template-columns: 1fr 2fr;
+}
+
+.character-stats {
+    display: flex;
+    padding: 25px;
+    justify-content:flex-start;
+    align-items:flex-start;
+    flex-direction: column;
+}
+
+.character-stats li {
+    list-style: none;
+    text-decoration-style: double;
+    padding-bottom: 25px;
+}
+
+.character-stats ul {
+    padding: 0;
+    margin: 0;
+}

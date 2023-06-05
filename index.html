@@ -15,20 +15,35 @@
             <div class="creation-menu">
                 <form action="" id="charForm" class="form" method="get">
                     <fieldset class="fieldset">
-                        <div class="input-container">
-                            <label for="name">Name:</label>
-                            <input type="text" name="name" id="">
-                            <span></span>
-                        </div>
-                        <div class="input-container">
-                            <label for="race">Race:</label>
-                            <input type="text" name="race" id="">
-                            <span></span>
-                        </div>
-                        <div class="input-container">
-                            <label for="role">Role:</label>
-                            <input type="text" name="role" id="">
-                            <span></span>
+                        <div class="form-container">
+                            <div class="input-container">
+                                <label for="name">Course Name:</label>
+                                <input type="text" name="name" class="inputName">
+                                <span></span>
+                            </div>
+                            <div class="input-container">
+                                <label for="URL">URL:</label>
+                                <input type="url" name="URL" class="inputRace">
+                                <span></span>
+                            </div>
+                            <div class="input-container">
+                                <label for="TotalLessons">Total Lessons:</label>
+                                <input type="number" name="TotalLessons" class="inputTotalLes">
+                                <span></span>
+                            </div>
+                            <div class="input-container">
+                                <label for="TakenLessons">Taken Lessons:</label>
+                                <input type="number" name="TakenLessons" class="inputTakenLes">
+                                <span></span>
+                            </div>
+                            <div class="inputStatus-container">
+                                <label for="Status">Currently Taking:</label>
+                                <input type="checkbox" name="Status" checked>
+                                <span></span>
+                            </div>
+                            <div class="btnAdd-container">
+                                <button class="btnAdd">Add Course</button>
+                            </div>
                         </div>
                     </fieldset>
                 </form>

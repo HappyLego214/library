@@ -1,13 +1,18 @@
 const characterCards = document.querySelectorAll(".character-card");
 const cardContainer = document.querySelector(".card-container");
+const inputName = document.querySelector(".inputName");
+const inputRace = document.querySelector(".inputRace");
+const inputRole = document.querySelector(".inputRole");
+const btnAddChar = document.querySelector(".btnAdd");
 
 let statBtn = document.querySelectorAll('.stat-button');
 let library = [];
-class char {
-    constructor(name, race, role, status) {
+class course {
+    constructor(name, url, totalLessons, takenLessons, status) {
         this.name = name
-        this.race = race
-        this.role = role
+        this.url = url
+        this.totalLessons = totalLessons
+        this.takenLessons = takenLessons
         this.status = status
     }
 
@@ -16,32 +21,32 @@ class char {
     }
 }
 
-function addCharToSelection(character) {
-    library.push(character);
+btnAddChar.addEventListener('click', (event) => {
+    event.preventDefault();
+});
+
+function addCharToSelection(course) {
+    library.push(course);
 }
 
 function iterateThrough(array) {
     for (let i = 0; i < array.length; i++) {
-        createCard(array[i].name, array[i].race, array[i].role, array[i].status);
+        createCard(array[i].name, array[i].url, array[i].totalLessons, array[i].takenLessons, array[i].status);
     }
 }
 
-function createCard(name, race, role, status) {
+function createCard(name, url, totalLessons, takenLessons, status) {
 
     // CARD BODY
 
     const newCard = document.createElement('div');
-    newCard.className = "character-card" ;
+    newCard.className = "course-card" ;
     newCard.id = name;
     cardContainer.append(newCard);
 
     const newStat = document.createElement('div');
-    newStat.className = "character-stats";
+    newStat.className = "course-stats";
     newCard.append(newStat);
-
-    const newView = document.createElement('div');
-    newView.className = "character-view";
-    newCard.append(newView);
 
     // LIST VIEW
 
@@ -57,32 +62,38 @@ function createCard(name, race, role, status) {
 
     const newName = document.createElement('li');
     newName.className = 'name';
-    newName.textContent = name;
     newUL.append(newName);
 
-    // RACE
+    // URL
 
-    const newRaceLabel = document.createElement('label');
-    newRaceLabel.textContent = 'Race:';
-    newRaceLabel.setAttribute('for', 'race');
-    newUL.append(newRaceLabel);
+    const newURL = document.createElement('a');
+    newURL.href = url;
+    newURL.textContent = name;
+    newName.append(newURL);
 
-    const newRace = document.createElement('li');
-    newRace.className = 'race';
-    newRace.textContent = race;
-    newUL.append(newRace);
+    // TOTAL LESSONS
 
-    // ROLE
+    const newTotalLesLabel = document.createElement('label');
+    newTotalLesLabel.textContent = 'Total Lessons:';
+    newTotalLesLabel.setAttribute('for', 'total-lessons');
+    newUL.append(newTotalLesLabel);
 
-    const newRoleLabel = document.createElement('label');
-    newRoleLabel.textContent = 'Role:';
-    newRoleLabel.setAttribute('for', 'role');
-    newUL.append(newRoleLabel);
+    const newTotalLes = document.createElement('li');
+    newTotalLes.className = 'total-lessons';
+    newTotalLes.textContent = totalLessons;
+    newUL.append(newTotalLes);
 
-    const newRole = document.createElement('li');
-    newRole.className = 'role';
-    newRole.textContent = role;
-    newUL.append(newRole);
+    // TAKEN LESSONS
+
+    const newTakenLesLabel = document.createElement('label');
+    newTakenLesLabel.textContent = 'Taken Lessons:';
+    newTakenLesLabel.setAttribute('for', 'taken-lessons');
+    newUL.append(newTakenLesLabel);
+
+    const newTakenLes = document.createElement('li');
+    newTakenLes.className = 'taken-lessons';
+    newTakenLes.textContent = takenLessons;
+    newUL.append(newTakenLes);
 
     // STATUS
 
@@ -113,29 +124,20 @@ function activeBtn() {
 
             cardProperty.active();
             btn.textContent = cardProperty.status;
-            
         });
     }));
 }
 
 // active character
 
-let ex = new char("TheLegend", "Orc", "Berserker", true)
+let ex = new course("TheOdinProject", "https://www.theodinproject.com/dashboard", "131", "27", true);
 ex.active();
 
-let de = new char("Exp", "Elf", "Mage", true)
-de.active();
-
-// inactive character
-
-let ze = new char("ZzXt", "Human", "Archer", false)
+let ze = new course("Harvard CS50", "https://learning.edx.org/course/course-v1:HarvardX+CS50+X/home", "14", "0", false);
 ze.active();
-
-
 
 addCharToSelection(ex);
 addCharToSelection(ze);
-addCharToSelection(de);
 
 iterateThrough(library);
 activeBtn();

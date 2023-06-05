@@ -1,8 +1,8 @@
 const characterCards = document.querySelectorAll(".character-card");
 const cardContainer = document.querySelector(".card-container");
 
-let StatBtn = "";
-let library = []
+let statBtn = document.querySelectorAll('.stat-button');
+let library = [];
 class char {
     constructor(name, race, role, status) {
         this.name = name
@@ -32,6 +32,7 @@ function createCard(name, race, role, status) {
 
     const newCard = document.createElement('div');
     newCard.className = "character-card" ;
+    newCard.id = name;
     cardContainer.append(newCard);
 
     const newStat = document.createElement('div');
@@ -90,16 +91,29 @@ function createCard(name, race, role, status) {
     newStatBtn.className = 'stat-button';
     newStat.append(newStatBtn);
 
-    StatBtn = document.querySelectorAll('.stat-button')
-    activeButton();
+    statBtn = document.querySelectorAll('.stat-button');
+
 }
 
 // FIX BUTTON ACTIVE/INACTIVE STATE
 
-function activeButton() {
-    StatBtn.forEach((btn => {
+function activeBtn() {
+    statBtn.forEach((btn => {
         btn.addEventListener('click', () => {
-            console.log(btn);
+            
+            let btnMainParentID = btn.parentElement.parentElement.id;
+            let cardProperty = library.find(element => element.name == btnMainParentID);
+
+            if (cardProperty.status == "Active") {
+                cardProperty.status = false;
+
+            } else if (cardProperty.status == "Inactive") {
+                cardProperty.status = true;
+            }
+
+            cardProperty.active();
+            btn.textContent = cardProperty.status;
+            
         });
     }));
 }
@@ -109,17 +123,19 @@ function activeButton() {
 let ex = new char("TheLegend", "Orc", "Berserker", true)
 ex.active();
 
+let de = new char("Exp", "Elf", "Mage", true)
+de.active();
+
 // inactive character
 
 let ze = new char("ZzXt", "Human", "Archer", false)
 ze.active();
 
-let de = new char("Exp", "Elf", "Mage", true)
-de.active();
+
 
 addCharToSelection(ex);
 addCharToSelection(ze);
 addCharToSelection(de);
 
-
 iterateThrough(library);
+activeBtn();

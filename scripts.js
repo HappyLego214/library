@@ -113,8 +113,6 @@ function createCard(name, url, totalLessons, takenLessons, status) {
     newStatBtn.textContent = status;
     newStatBtn.className = 'stat-button';
     newStat.append(newStatBtn);
-
-    statBtn = document.querySelectorAll('.stat-button');
 }
 
 // FIX BUTTON ACTIVE/INACTIVE STATE

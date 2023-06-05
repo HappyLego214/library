@@ -1,4 +1,4 @@
-const characterCards = document.querySelectorAll(".character-card");
+const courseCard = document.querySelectorAll(".course-card");
 const cardContainer = document.querySelector(".card-container");
 const siteName = document.querySelector(".inputName");
 const siteURL = document.querySelector(".inputURL");
@@ -119,25 +119,22 @@ function createCard(name, url, totalLessons, takenLessons, status) {
 
 // FIX BUTTON ACTIVE/INACTIVE STATE
 
-function activeBtn() {
-    statBtn.forEach((btn => {
-        btn.addEventListener('click', () => {
-            
-            let btnMainParentID = btn.parentElement.parentElement.id;
-            let cardProperty = library.find(element => element.name == btnMainParentID);
+document.addEventListener('click', function(e) {
+    const target = e.target.closest(".stat-button");
+    if(target) {
+        let btnMainParentID = target.parentElement.parentElement.id;
+        let cardProperty = library.find(element => element.name == btnMainParentID);
 
-            if (cardProperty.status == "Active") {
-                cardProperty.status = false;
+        if (cardProperty.status == "Active") {
+            cardProperty.status = false;
 
-            } else if (cardProperty.status == "Inactive") {
-                cardProperty.status = true;
-            }
-
-            cardProperty.active();
-            btn.textContent = cardProperty.status;
-        });
-    }));
-}
+        } else if (cardProperty.status == "Inactive") {
+            cardProperty.status = true;
+        }
+        cardProperty.active();
+        target.textContent = cardProperty.status;
+    }
+})
 
 // active character
 
@@ -150,5 +147,4 @@ ze.active();
 addCharToSelection(ex);
 addCharToSelection(ze);
 loadStored(library);
-activeBtn();
 

@@ -18,27 +18,27 @@
                         <div class="form-container">
                             <div class="input-container">
                                 <label for="name">Course Name:</label>
-                                <input type="text" name="name" class="inputName">
+                                <input type="text" name="name" class="inputName" aria-live="polite">
                                 <span></span>
                             </div>
                             <div class="input-container">
                                 <label for="URL">URL:</label>
-                                <input type="url" name="URL" class="inputRace">
+                                <input type="url" name="URL" class="inputURL" aria-live="polite">
                                 <span></span>
                             </div>
                             <div class="input-container">
                                 <label for="TotalLessons">Total Lessons:</label>
-                                <input type="number" name="TotalLessons" class="inputTotalLes">
+                                <input type="number" name="TotalLessons" class="inputTotalLes" min="0" aria-live="polite">
                                 <span></span>
                             </div>
                             <div class="input-container">
                                 <label for="TakenLessons">Taken Lessons:</label>
-                                <input type="number" name="TakenLessons" class="inputTakenLes">
+                                <input type="number" name="TakenLessons" class="inputTakenLes" min="0" aria-live="polite">
                                 <span></span>
                             </div>
                             <div class="inputStatus-container">
                                 <label for="Status">Currently Taking:</label>
-                                <input type="checkbox" name="Status" checked>
+                                <input type="checkbox" name="Status" class="inputStatus" checked aria-live="polite">
                                 <span></span>
                             </div>
                             <div class="btnAdd-container">

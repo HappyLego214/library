@@ -1,12 +1,15 @@
 const characterCards = document.querySelectorAll(".character-card");
 const cardContainer = document.querySelector(".card-container");
-const inputName = document.querySelector(".inputName");
-const inputRace = document.querySelector(".inputRace");
-const inputRole = document.querySelector(".inputRole");
+const siteName = document.querySelector(".inputName");
+const siteURL = document.querySelector(".inputURL");
+const totalLes = document.querySelector(".inputTotalLes");
+const takenLes = document.querySelector(".inputTakenLes");
+const lesStatus = document.querySelector(".inputStatus");
 const btnAddChar = document.querySelector(".btnAdd");
 
 let statBtn = document.querySelectorAll('.stat-button');
 let library = [];
+
 class course {
     constructor(name, url, totalLessons, takenLessons, status) {
         this.name = name
@@ -23,16 +26,25 @@ class course {
 
 btnAddChar.addEventListener('click', (event) => {
     event.preventDefault();
+    let newCourse = new course(siteName.value, siteURL.value, totalLes.value, takenLes.value, lesStatus.checked);
+    addCharToSelection(newCourse);
+    loadNew(library);
 });
 
 function addCharToSelection(course) {
     library.push(course);
 }
 
-function iterateThrough(array) {
+function loadStored(array) {
     for (let i = 0; i < array.length; i++) {
         createCard(array[i].name, array[i].url, array[i].totalLessons, array[i].takenLessons, array[i].status);
     }
+}
+
+function loadNew(array) {
+    let newCourse = array[array.length - 1];
+    newCourse.active();
+    createCard(newCourse.name, newCourse.url, newCourse.totalLessons, newCourse.takenLessons, newCourse.status);
 }
 
 function createCard(name, url, totalLessons, takenLessons, status) {
@@ -103,7 +115,6 @@ function createCard(name, url, totalLessons, takenLessons, status) {
     newStat.append(newStatBtn);
 
     statBtn = document.querySelectorAll('.stat-button');
-
 }
 
 // FIX BUTTON ACTIVE/INACTIVE STATE
@@ -138,6 +149,6 @@ ze.active();
 
 addCharToSelection(ex);
 addCharToSelection(ze);
-
-iterateThrough(library);
+loadStored(library);
 activeBtn();
+

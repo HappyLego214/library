@@ -137,13 +137,24 @@ function createCard(name, url, totalLessons, takenLessons, status) {
 
 }
 
+cardContainer.addEventListener('click', function(e) {
+    const target = e.target.closest(".del-button");
+    if (target) {
+        let topNode = e.target.closest('.course-card');
+        let libName = library.findIndex(element => element.name == topNode.dataset.name)
+        library.splice(libName);
+        topNode.replaceChildren();
+        topNode.remove();
+    }
+});
+
 // BUTTON ACTIVE/INACTIVE STATE
 
 cardContainer.addEventListener('click', function(e) {
     const target = e.target.closest(".stat-button");
     if(target) {
-        let identifier = e.target.closest('.course-card').dataset.name;
-        let cardProperty = library.find(element => element.name == identifier);
+        let identifier = e.target.closest('.course-card');
+        let cardProperty = library.find(element => element.name == identifier.dataset.name);
 
         if (cardProperty.status == "Active") {
             cardProperty.status = false;

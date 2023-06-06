@@ -5,7 +5,7 @@ const siteURL = document.querySelector(".inputURL");
 const totalLes = document.querySelector(".inputTotalLes");
 const takenLes = document.querySelector(".inputTakenLes");
 const lesStatus = document.querySelector(".inputStatus");
-const btnAddChar = document.querySelector(".btnAdd");
+const btnAddCard = document.querySelector(".btnAdd");
 
 let statBtn = document.querySelectorAll('.stat-button');
 let library = [];
@@ -24,7 +24,7 @@ class course {
     }
 }
 
-btnAddChar.addEventListener('click', (event) => {
+btnAddCard.addEventListener('click', (event) => {
     event.preventDefault();
     let newCourse = new course(siteName.value, siteURL.value, totalLes.value, takenLes.value, lesStatus.checked);
     addCharToSelection(newCourse);
@@ -40,6 +40,7 @@ function loadStored(array) {
         createCard(array[i].name, array[i].url, array[i].totalLessons, array[i].takenLessons, array[i].status);
     }
 }
+
 
 function loadNew(array) {
     let newCourse = array[array.length - 1];
@@ -107,21 +108,42 @@ function createCard(name, url, totalLessons, takenLessons, status) {
     newTakenLes.textContent = takenLessons;
     newUL.append(newTakenLes);
 
-    // STATUS
+    // BUTTON CONTAINER
+
+    const newBtnContainer = document.createElement('div');
+    newBtnContainer.className = 'cardBtnContainer';
+    newStat.append(newBtnContainer);
+
+    // STATUS BUTTON
 
     const newStatBtn = document.createElement('button');
     newStatBtn.textContent = status;
-    newStatBtn.className = 'stat-button';
-    newStat.append(newStatBtn);
+    newStatBtn.className = 'stat-button card-tool';
+    newBtnContainer.append(newStatBtn);
+
+    // EDIT BUTTON
+
+    const newEditBtn = document.createElement('button');
+    newEditBtn.className = 'edit-button card-tool';
+    newEditBtn.textContent = 'Edit Card';
+    newBtnContainer.append(newEditBtn);
+
+    // DELETE BUTTON
+
+    const newDeleteBtn = document.createElement('button');
+    newDeleteBtn.className = 'del-button card-tool';
+    newDeleteBtn.textContent = 'Delete Card';
+    newBtnContainer.append(newDeleteBtn);
+
 }
 
-// FIX BUTTON ACTIVE/INACTIVE STATE
+// BUTTON ACTIVE/INACTIVE STATE
 
-document.addEventListener('click', function(e) {
+cardContainer.addEventListener('click', function(e) {
     const target = e.target.closest(".stat-button");
     if(target) {
-        let btnMainParentDataSet = target.parentElement.parentElement.dataset.name;
-        let cardProperty = library.find(element => element.name == btnMainParentDataSet);
+        let identifier = e.target.closest('.course-card').dataset.name;
+        let cardProperty = library.find(element => element.name == identifier);
 
         if (cardProperty.status == "Active") {
             cardProperty.status = false;

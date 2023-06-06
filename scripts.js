@@ -41,7 +41,6 @@ function loadStored(array) {
     }
 }
 
-
 function loadNew(array) {
     let newCourse = array[array.length - 1];
     newCourse.active();
@@ -61,52 +60,65 @@ function createCard(name, url, totalLessons, takenLessons, status) {
     newStat.className = "course-stats";
     newCard.append(newStat);
 
-    // LIST VIEW
+    // CARD TITLE
 
-    const newUL = document.createElement('ul');
-    newStat.append(newUL)
+    const cardTitleContainer = document.createElement('div');
+    cardTitleContainer.className = "cardTitleContainer"
+    newStat.append(cardTitleContainer);
 
-    // NAME
+    const cardTitle = document.createElement('h2');
+    cardTitleContainer.append(cardTitle);
 
-    const newNameLabel = document.createElement('label');
-    newNameLabel.textContent = "Name:";
-    newNameLabel.setAttribute('for', 'name');
-    newUL.append(newNameLabel);
+    const cardTitleURL = document.createElement('a');
+    cardTitleURL.href = url;
+    cardTitleURL.textContent = name;
+    cardTitle.append(cardTitleURL);
 
-    const newName = document.createElement('li');
-    newName.className = 'name';
-    newUL.append(newName);
+    // CARD INFO
 
-    // URL
+    const cardInfoContainer = document.createElement('div');
+    cardInfoContainer.className = "cardInfoContainer";
+    newStat.append(cardInfoContainer);
 
-    const newURL = document.createElement('a');
-    newURL.href = url;
-    newURL.textContent = name;
-    newName.append(newURL);
+    // CARD LESSON
+
+    const cardLessonsContainer = document.createElement('div');
+    cardLessonsContainer.className = "cardLessonsContainer";
+    cardInfoContainer.append(cardLessonsContainer);
 
     // TOTAL LESSONS
 
-    const newTotalLesLabel = document.createElement('label');
-    newTotalLesLabel.textContent = 'Total Lessons:';
-    newTotalLesLabel.setAttribute('for', 'total-lessons');
-    newUL.append(newTotalLesLabel);
+    const cardTotalLessons = document.createElement('div');
+    cardTotalLessons.className = "cardTotalLessons";
+    cardLessonsContainer.append(cardTotalLessons);
 
-    const newTotalLes = document.createElement('li');
-    newTotalLes.className = 'total-lessons';
-    newTotalLes.textContent = totalLessons;
-    newUL.append(newTotalLes);
+    const cardTotalLesTitle = document.createElement('h3');
+    cardTotalLesTitle.textContent = "Total Lessons";
+    cardTotalLessons.append(cardTotalLesTitle);
+
+    const cardTotalLesNum = document.createElement('h1');
+    cardTotalLesNum.textContent = totalLessons;
+    cardTotalLessons.append(cardTotalLesNum);
 
     // TAKEN LESSONS
 
-    const newTakenLesLabel = document.createElement('label');
-    newTakenLesLabel.textContent = 'Taken Lessons:';
-    newTakenLesLabel.setAttribute('for', 'taken-lessons');
-    newUL.append(newTakenLesLabel);
+    const cardTakenLessons = document.createElement('div');
+    cardTakenLessons.className = "cardTakenLessons";
+    cardLessonsContainer.append(cardTakenLessons);
 
-    const newTakenLes = document.createElement('li');
-    newTakenLes.className = 'taken-lessons';
-    newTakenLes.textContent = takenLessons;
-    newUL.append(newTakenLes);
+    const cardTakenLesTitle = document.createElement('h3');
+    cardTakenLesTitle.textContent = "Taken Lessons";
+    cardTakenLessons.append(cardTakenLesTitle);
+
+    const cardTakenLesNum = document.createElement('h1');
+    cardTakenLesNum.textContent = takenLessons;
+    cardTakenLessons.append(cardTakenLesNum);
+
+    // MENU CONTAINER
+
+    const cardMenuContainer = document.createElement('div');
+    cardMenuContainer.className = "cardMenuContainer";
+    cardInfoContainer.append(cardMenuContainer);
 
     // BUTTON CONTAINER
 
@@ -121,13 +133,6 @@ function createCard(name, url, totalLessons, takenLessons, status) {
     newStatBtn.className = 'stat-button card-tool';
     newBtnContainer.append(newStatBtn);
 
-    // EDIT BUTTON
-
-    const newEditBtn = document.createElement('button');
-    newEditBtn.className = 'edit-button card-tool';
-    newEditBtn.textContent = 'Edit Card';
-    newBtnContainer.append(newEditBtn);
-
     // DELETE BUTTON
 
     const newDeleteBtn = document.createElement('button');
@@ -136,6 +141,8 @@ function createCard(name, url, totalLessons, takenLessons, status) {
     newBtnContainer.append(newDeleteBtn);
 
 }
+
+// DELETE CARD
 
 cardContainer.addEventListener('click', function(e) {
     const target = e.target.closest(".del-button");
@@ -153,19 +160,31 @@ cardContainer.addEventListener('click', function(e) {
 cardContainer.addEventListener('click', function(e) {
     const target = e.target.closest(".stat-button");
     if(target) {
+
         let identifier = e.target.closest('.course-card');
         let cardProperty = library.find(element => element.name == identifier.dataset.name);
 
         if (cardProperty.status == "Active") {
             cardProperty.status = false;
 
+
         } else if (cardProperty.status == "Inactive") {
             cardProperty.status = true;
         }
+
         cardProperty.active();
         target.textContent = cardProperty.status;
+
     }
 })
+
+// TAKEN LESSONS INCREMENT
+
+function incrementActive(e) {
+    let identifier = e.target.closest('.course-card');
+    let cardProperty = library.find(element => element.name == identifier.dataset.name);
+    
+}
 
 // active character
 

@@ -62,22 +62,19 @@ div {
     justify-content: flex-start;
     display: grid;
     gap: 15px;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-template-rows: repeat(auto-fit, minmax(300px, 350px));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 400px));
+    grid-template-rows: repeat(auto-fit, min(400px));
 }
 
 .course-card {
     display: grid;
     border: 1px solid black;
-    grid-template-columns: 1fr;
 }
 
 .course-stats {
-    display: flex;
+    display: grid;
     padding: 25px;
-    justify-content:flex-start;
-    align-items:flex-start;
-    flex-direction: column;
+    grid-template-rows: 1fr 4.5fr 1.5fr;
 }
 
 .course-stats li {
@@ -101,12 +98,51 @@ div {
     width: 250px;
 }
 
+.cardTitleContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cardInfoContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
 .cardBtnContainer {
     display: flex;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
     gap: 15px;
     height: 100%;
     width: 100%;
+}
+
+.cardTotalLessons {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cardTakenLessons {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cardLessonsContainer {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+.input-container label {
+    font-size: large;
+}
+
+.input-container input {
+    font-size: medium;
+    padding: 3px;
 }
 

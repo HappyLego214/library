@@ -53,7 +53,7 @@ function createCard(name, url, totalLessons, takenLessons, status) {
 
     const newCard = document.createElement('div');
     newCard.className = "course-card" ;
-    newCard.id = name;
+    newCard.dataset.name = name;
     cardContainer.append(newCard);
 
     const newStat = document.createElement('div');
@@ -120,8 +120,8 @@ function createCard(name, url, totalLessons, takenLessons, status) {
 document.addEventListener('click', function(e) {
     const target = e.target.closest(".stat-button");
     if(target) {
-        let btnMainParentID = target.parentElement.parentElement.id;
-        let cardProperty = library.find(element => element.name == btnMainParentID);
+        let btnMainParentDataSet = target.parentElement.parentElement.dataset.name;
+        let cardProperty = library.find(element => element.name == btnMainParentDataSet);
 
         if (cardProperty.status == "Active") {
             cardProperty.status = false;

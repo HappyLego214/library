@@ -56,6 +56,13 @@ div {
     gap: 15px;
 }
 
+.cardMenuContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: x-large;
+}
+
 .card-container {
     border: 1px solid black;
     justify-content: flex-start;

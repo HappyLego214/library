@@ -199,15 +199,30 @@ cardContainer.addEventListener('click', function(e) {
 // TAKEN LESSONS INCREMENT
     
 cardContainer.addEventListener('click', function(e) {
-    const target = e.target.closest(".increment-button");
-    if (target) {
-        let identifier = e.target.closest('.course-card');
-        let cardIndex = library.findIndex(element => element.name == identifier.dataset.name);
-        let cardProperty = library.find(element => element.name == identifier.dataset.name);
-        let iterate = parseInt(cardProperty.takenLessons) + 1;
-        return library.splice(cardIndex.takenLessons, iterate.toString()); 
+    const increment = e.target.closest(".increment-button");
+    const decrement = e.target.closest(".decrement-button");
+
+    if (increment) {
+        const identifier = e.target.closest('.course-card');
+        const cardIndex = library.findIndex(element => element.name == identifier.dataset.name);
+        const cardProperty = parseInt(library[cardIndex].takenLessons) + 1;
+        
+        library[cardIndex].takenLessons = cardProperty;
+
+        let check = identifier.getElementsByClassName('cardTakenLessons');
+        check[0].lastChild.textContent = cardProperty;
+
+    } else if (decrement) {
+        const identifier = e.target.closest('.course-card');
+        const cardIndex = library.findIndex(element => element.name == identifier.dataset.name);
+        const cardProperty = parseInt(library[cardIndex].takenLessons) - 1;
+
+        library[cardIndex].takenLessons = cardProperty;
+
+        let check = identifier.getElementsByClassName('cardTakenLessons');
+        check[0].lastChild.textContent = cardProperty;
     }
-})
+});
 
 // COMPLETION RATE
 

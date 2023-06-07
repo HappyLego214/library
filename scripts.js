@@ -1,4 +1,3 @@
-const courseCard = document.querySelectorAll(".course-card");
 const cardContainer = document.querySelector(".card-container");
 const siteName = document.querySelector(".inputName");
 const siteURL = document.querySelector(".inputURL");
@@ -140,6 +139,26 @@ function createCard(name, url, totalLessons, takenLessons, status) {
     newDeleteBtn.textContent = 'Delete Card';
     newBtnContainer.append(newDeleteBtn);
 
+    // INCREMENT CONTAINER
+
+    const newIncrementContainer = document.createElement('div');
+    newIncrementContainer.className = 'cardIncrementContainer';
+    newStat.append(newIncrementContainer);
+
+    // INCREMENT LESSON
+
+    const nextIncrement = document.createElement('button');
+    nextIncrement.textContent = "Increase Progress";
+    nextIncrement.className = 'increment-button card-tool';
+    newIncrementContainer.append(nextIncrement);
+
+    // DECREMENT LESSON
+
+    const nextDecrement = document.createElement('button');
+    nextDecrement.textContent = "Decrease Progress";
+    nextDecrement.className = 'decrement-button card-tool';
+    newIncrementContainer.append(nextDecrement);
+
 }
 
 // DELETE CARD
@@ -174,16 +193,29 @@ cardContainer.addEventListener('click', function(e) {
 
         cardProperty.active();
         target.textContent = cardProperty.status;
+    }
+});
 
+// TAKEN LESSONS INCREMENT
+    
+cardContainer.addEventListener('click', function(e) {
+    const target = e.target.closest(".increment-button");
+    if (target) {
+        let identifier = e.target.closest('.course-card');
+        let cardIndex = library.findIndex(element => element.name == identifier.dataset.name);
+        let cardProperty = library.find(element => element.name == identifier.dataset.name);
+        let iterate = parseInt(cardProperty.takenLessons) + 1;
+        return library.splice(cardIndex.takenLessons, iterate.toString()); 
     }
 })
 
-// TAKEN LESSONS INCREMENT
+// COMPLETION RATE
 
-function incrementActive(e) {
-    let identifier = e.target.closest('.course-card');
-    let cardProperty = library.find(element => element.name == identifier.dataset.name);
-    
+function completionRate() {
+    library.forEach((e => {
+        let perc = Math.trunc((e.takenLessons / e.totalLessons) * 100)
+        return perc;
+    }));
 }
 
 // active character

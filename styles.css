@@ -10,7 +10,7 @@
 }
 
 div {
- border: 1px solid black;
+ border: 0px solid black;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
@@ -24,7 +24,9 @@ div {
     display: grid;
     grid-template-rows: 250px 1fr;
     min-height: 100dvb;
-    margin: 10px 10px 10px 10px;
+    background-color: white;
+    min-width: fit-content;
+    margin: 20px;
     gap: 25px;
 }
 
@@ -94,6 +96,7 @@ div {
 }
 
 .msg-notif-container {
+    padding-top: 8px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -112,6 +115,7 @@ div {
 }
 
 .searchbar-container {
+    padding: 0px 20px 0 20px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -120,6 +124,7 @@ div {
 .searchbar {
     padding: 10px;
     width: 85%;
+    min-width: 300px;
     border: 1px solid var(--gray);
     border-radius: 25px;
     display: flex;
@@ -141,21 +146,8 @@ div {
     display: grid;
     border-top: 1px solid black;
     padding-top: 20px;
+    padding-bottom: 20px;
     grid-template-columns: 250px 1fr;
-}
-
-.members-container {
-    display: flex;
-    justify-content: flex-end;
-    align-items: end;
-    padding-right: 45px;
-}
-
-.members {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    height: 50px;
-    width: 250px;
 }
 
 .title-container {
@@ -166,6 +158,87 @@ div {
 .title-container h1 {
     font-size: 45px;
     padding-left: 35px;
+}
+
+.members-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 120px;
+}
+
+.members {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr; 
+    width: fit-content;
+    height: fit-content;
+}
+
+.member-1 {
+    position: relative;
+    z-index: 1;
+}
+
+.member-1 img {
+    position: absolute;
+    left: 30px;
+}
+
+.member-2 {
+    position: relative;
+    z-index: 2;
+}
+
+.member-2 img {
+    position: absolute;
+    left: 20px;
+}
+
+.member-3 {
+    position: relative;
+    z-index: 3;
+}
+
+.member-3 img {
+    position: absolute;
+    left: 10px;
+}
+
+.member-4 {
+    position: relative;
+    z-index: 4;
+}
+
+.member-5 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.member-5 a {
+    position: absolute;
+    top: 2px;
+    left: 25px;
+}
+
+.member-5 svg {
+    overflow: visible;
+    border: 2px solid var(--gray);
+    background-color: var(--lightgray);
+    padding: 10px;
+    border-radius: 25px;
+}
+
+.member-5 svg:hover {
+    stroke: white;
+    border-color: var(--mellowgreen);
+    background-color: var(--mellowgreen);
+}
+
+.members img {
+    border: 3px solid white;
+    border-radius: 50px;
 }
 
 .bottom-header-container {

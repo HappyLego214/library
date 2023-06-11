@@ -22,7 +22,7 @@ div {
 
 .main-container {
     display: grid;
-    grid-template-rows: 250px 1fr;
+    grid-template-rows: 290px 1fr;
     min-height: 100dvb;
     background-color: white;
     min-width: fit-content;
@@ -146,7 +146,6 @@ div {
     display: grid;
     border-top: 1px solid black;
     padding-top: 20px;
-    padding-bottom: 20px;
     grid-template-columns: 250px 1fr;
 }
 
@@ -243,6 +242,7 @@ div {
 
 .bottom-header-container {
     display: grid;
+    align-items: center;
     grid-template-columns: 1fr 1fr;
 }
 
@@ -277,11 +277,19 @@ div {
 }
 
 .options-container a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
     text-decoration: none;
     background-color: var(--lightgray);
     color: var(--gray);
     padding: 12px 12px 12px 12px;
     border-radius: 15px;
+}
+
+.options-container a:hover svg {
+    stroke: white
 }
 
 .options-container a:hover {

@@ -219,22 +219,38 @@ cardContainer.addEventListener('click', function(e) {
     if (increment) {
         const identifier = e.target.closest('.course-card');
         const cardIndex = library.findIndex(element => element.name == identifier.dataset.name);
-        const cardProperty = parseInt(library[cardIndex].takenLessons) + 1;
-        
-        library[cardIndex].takenLessons = cardProperty;
+        const cardTakenLessons = parseInt(library[cardIndex].takenLessons) + 1;
+        const cardTotalLessons = parseInt(library[cardIndex].totalLessons);
 
-        let check = identifier.getElementsByClassName('cardTakenLessons');
-        check[0].lastChild.textContent = cardProperty;
+        if  (cardTakenLessons <= cardTotalLessons) {
+
+            library[cardIndex].takenLessons = cardTakenLessons;
+
+            let takenLessonTag = identifier.getElementsByClassName('cardTakenLessons');
+            takenLessonTag[0].lastChild.textContent = cardTakenLessons;
+
+            let completionRateTag = identifier.getElementsByClassName('cardMenuContainer');
+            let newCompRate = completionRate(cardTakenLessons, cardTotalLessons);
+            completionRateTag[0].lastChild.textContent = `${newCompRate}%`
+        }
 
     } else if (decrement) {
         const identifier = e.target.closest('.course-card');
         const cardIndex = library.findIndex(element => element.name == identifier.dataset.name);
-        const cardProperty = parseInt(library[cardIndex].takenLessons) - 1;
+        const cardTakenLessons = parseInt(library[cardIndex].takenLessons) - 1;
+        const cardTotalLessons = parseInt(library[cardIndex].totalLessons);
 
-        library[cardIndex].takenLessons = cardProperty;
+        if (cardTakenLessons >= 0) {
+            
+            library[cardIndex].takenLessons = cardTakenLessons;
 
-        let check = identifier.getElementsByClassName('cardTakenLessons');
-        check[0].lastChild.textContent = cardProperty;
+            let takenLessonTag = identifier.getElementsByClassName('cardTakenLessons');
+            takenLessonTag[0].lastChild.textContent = cardTakenLessons;
+
+            let completionRateTag = identifier.getElementsByClassName('cardMenuContainer');
+            let newCompRate = completionRate(cardTakenLessons, cardTotalLessons);
+            completionRateTag[0].lastChild.textContent = `${newCompRate}%`
+        }
     }
 });
 

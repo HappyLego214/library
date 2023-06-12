@@ -368,31 +368,125 @@ div {
     text-decoration: none;
 }
 
-.input-container {
+.creation-menu-container {
     display: flex;
-    padding: 10px;
-    flex-direction: column;
+    position: fixed;
+    z-index: 4;
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
 }
 
-.inputStatus-container {
-    padding: 10px;
-}
-
-.btnTool-container {
+.creation-menu {
     display: flex;
     justify-content: center;
-    padding: 10px
+    align-items: center;
+    width: 100%;
 }
 
-.input-container input {
-    outline: black;
-}
 
 .form-container {
+    display: grid;
+    border-radius: 25px;
+    grid-template-rows: 0.5fr 4fr 4fr;
+    background-color: white;
+    height: 750px;
+    width: 550px;
+    padding: 35px;
+    gap: 15px;
+}
+
+.modal-top-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    border-bottom: 1px solid black;
+}
+
+.modal-top-container label {
+    display: none;
+}
+
+.modal-top-container input {
+    font-size: 38px;
+    outline: none;
+    border: 0;
+    width: 100%
+}
+
+.modal-top-container span {
+    cursor: pointer;
+}
+
+.modal-body-container {
+    display: grid;
+    grid-template-columns: 1.5fr 2fr;
+}
+
+.modal-label ul {
+    display: flex;
+    list-style: none;
+    flex-direction: column;
+    padding: 0px;
+    gap: 25px;
+}
+
+.modal-label li {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.modal-label p {
+    color: var(--gray);
+}
+
+.modal-inputs label {
+    display: none;
+}
+
+.modal-inputs ul {
+    display: flex;
+    list-style: none;
+    flex-direction: column;
+    padding-top: 5px;
+    gap: 29px;
+}
+
+.modal-inputs li {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.modal-inputs input {
+    outline: none;
+    border: none;
+}
+
+.modal-inputs .num {
+    width: 100px
+}
+
+.modal-bottom-container {
+    display: grid;
+    grid-template-rows: 2fr 0.8fr;
+    gap: 25px;
+}
+
+.modal-notes {
+    border: 1px solid grey;
+}
+
+.btnAddContainer {
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    gap: 15px;
+    align-items: center;
 }
 
 .cardMenuContainer {
@@ -487,20 +581,3 @@ div {
     grid-template-rows: 1fr 1fr;
 }
 
-.input-container label {
-    font-size: large;
-}
-
-.input-container input {
-    font-size: medium;
-    padding: 3px;
-}
-
-.inputStatus-container label {
-    font-size: large;
-}
-
-.inputStatus-container input {
-    font-size: large;
-    padding: 3px;
-}

@@ -4,10 +4,24 @@ const siteURL = document.querySelector(".inputURL");
 const totalLes = document.querySelector(".inputTotalLes");
 const takenLes = document.querySelector(".inputTakenLes");
 const lesStatus = document.querySelector(".inputStatus");
+const btnPopModal = document.querySelector(".popModal");
+const btnCloseModal = document.querySelector(".closeModal");
+const cmContainer = document.querySelector(".creation-menu-container");
+const creationMenu = document.querySelector(".creation-menu");
 const btnAddCard = document.querySelector(".btnAdd");
 
 let statBtn = document.querySelectorAll('.stat-button');
 let library = [];
+
+btnPopModal.addEventListener('click', () => {
+    cmContainer.style.display = "flex";
+});
+
+
+btnCloseModal.addEventListener('click', () => {
+    cmContainer.style.display = "none";
+})
+
 
 class course {
     constructor(name, url, totalLessons, takenLessons, status) {
@@ -228,10 +242,12 @@ cardContainer.addEventListener('click', function(e) {
 
 function completionRate() {
     library.forEach((e => {
+        console.log("check");
         let perc = Math.trunc((e.takenLessons / e.totalLessons) * 100)
         return perc;
     }));
 }
+
 
 // active character
 

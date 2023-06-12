@@ -162,7 +162,7 @@ function createCard(name, url, totalLessons, takenLessons, status) {
 
         const newDeleteBtn = document.createElement('button');
         newDeleteBtn.className = 'del-button card-tool';
-        newDeleteBtn.textContent = 'Delete Card';
+        newDeleteBtn.textContent = 'Delete';
         newBtnContainer.append(newDeleteBtn);
 
         // INCREMENT CONTAINER

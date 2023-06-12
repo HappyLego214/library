@@ -299,9 +299,12 @@ div {
 
 .display-container {
     display: grid;
-    border: 1px solid black;
+    border-radius: 25px;
     grid-template-rows: 100px 1fr;
+    padding-bottom: 35px;
+    background-color: var(--lightgray);
     grid-template-columns: 1fr 1fr 1fr;
+    gap: 35px;
     grid-template-areas: 
     "header header header"
     "body body body";
@@ -309,7 +312,10 @@ div {
 }
 
 .card-desc-container {
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
     display: grid;
+    background-color: white;
     grid-template-columns: 1fr 1fr 1fr;
     grid-area: header;
 }
@@ -327,6 +333,17 @@ div {
     padding: 0px 25px 0px 25px;
     gap: 25px;
     align-items: center;
+}
+
+.left-bar p {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding-top: 3.5px;
+    border-radius: 25px;
+    height: 30px;
+    width: 30px;
+    background-color: var(--lightgray);
 }
 
 .sb-1 .left-bar h3 {
@@ -369,7 +386,7 @@ div {
 }
 
 .creation-menu-container {
-    display: flex;
+    display: none;
     position: fixed;
     z-index: 4;
     left: 0;
@@ -497,17 +514,19 @@ div {
 }
 
 .card-container {
-    border: 1px solid black;
-    padding: 50px;
     justify-content: flex-start;
+    background-color: var(--lightgray);
     display: grid;
-    gap: 15px;
+    margin: 0px 35px 0px 35px;
+    gap: 35px;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    grid-template-rows: repeat(auto-fill, min(500px));
+    grid-template-rows: repeat(500px);
 }
 
 .course-card {
+    border-radius: 25px;
     display: grid;
+    background-color: white;
     min-height: 100%;
     border: 1px solid black;
 }

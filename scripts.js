@@ -136,7 +136,7 @@ function createCard(name, url, totalLessons, takenLessons, status) {
 
     const newDeleteBtn = document.createElement('button');
     newDeleteBtn.className = 'del-button card-tool';
-    newDeleteBtn.textContent = 'Delete Card';
+    newDeleteBtn.textContent = 'Delete';
     newBtnContainer.append(newDeleteBtn);
 
     // INCREMENT CONTAINER
@@ -235,13 +235,13 @@ function completionRate() {
 
 // active character
 
-let ex = new course("TheOdinProject", "https://www.theodinproject.com/dashboard", "131", "27", true);
-ex.active();
+// let ex = new course("TheOdinProject", "https://www.theodinproject.com/dashboard", "131", "27", true);
+// ex.active();
 
-let ze = new course("Harvard CS50", "https://learning.edx.org/course/course-v1:HarvardX+CS50+X/home", "14", "0", false);
-ze.active();
+// let ze = new course("Harvard CS50", "https://learning.edx.org/course/course-v1:HarvardX+CS50+X/home", "14", "0", false);
+// ze.active();
 
-addCharToSelection(ex);
-addCharToSelection(ze);
-loadStored(library);
+// addCharToSelection(ex);
+// addCharToSelection(ze);
+// loadStored(library);
 
